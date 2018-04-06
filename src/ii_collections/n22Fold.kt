@@ -12,10 +12,11 @@ fun whatFoldDoes(): Int {
     return result
 }
 
+// Return the set of products that were ordered by each of the customers
 fun Shop.getSetOfProductsOrderedByEachCustomer(): Set<Product> {
-    // Return the set of products that were ordered by each of the customers
+
     return customers.fold(allOrderedProducts, {
-        orderedByAll, customer ->
-        todoCollectionTask()
+        //TIL about `intersect`
+        orderedByAll, customer ->  orderedByAll.intersect(customer.orderedProducts)
     })
 }
